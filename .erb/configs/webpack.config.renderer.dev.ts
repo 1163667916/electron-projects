@@ -10,6 +10,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import baseConfig from './webpack.config.base';
 import webpackPaths from './webpack.paths';
 import checkNodeEnv from '../scripts/check-node-env';
+import setupProxy from '../../src/setupProxy';
 
 // When an ESLint server is running, we can't set the NODE_ENV so we'll check if it's
 // at the dev webpack config is not accidentally run in a production environment
@@ -180,8 +181,10 @@ const configuration: webpack.Configuration = {
     historyApiFallback: {
       verbose: true,
     },
-    setupMiddlewares(middlewares) {
+    setupMiddlewares(middlewares, devServer) {
       console.log('Starting preload.js builder...');
+      console.log('setupMiddlewares', typeof devServer.app);
+      setupProxy(devServer.app);
       const preloadProcess = spawn('npm', ['run', 'start:preload'], {
         shell: true,
         stdio: 'inherit',

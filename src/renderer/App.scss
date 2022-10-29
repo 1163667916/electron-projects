@@ -1,0 +1,127 @@
+@use 'sass:list';
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+$style-weight: (
+  (
+    name: '',
+    value: '',
+  ),
+  (
+    name: '-important',
+    value: '!important',
+  )
+);
+
+.fw {
+  width: 100%;
+}
+
+.fh {
+  height: 100%;
+}
+
+@function get-value($i) {
+  @return map-get(list.nth($style-weight, $i), value);
+}
+
+@function get-name($i) {
+  @return map-get(list.nth($style-weight, $i), name);
+}
+
+@for $i from 1 through 2 {
+  .flex-row#{get-name($i)} {
+    display: flex #{get-value($i)};
+    flex-direction: row #{get-value($i)};
+  }
+  .flex-column#{get-name($i)} {
+    display: flex #{get-value($i)};
+    flex-direction: column #{get-value($i)};
+  }
+  .flex-wrap#{get-name($i)} {
+    flex-wrap: wrap #{get-value($i)};
+  }
+  .flex-justify-content-flex-start#{get-name($i)} {
+    justify-content: flex-start #{get-value($i)};
+  }
+  .flex-justify-content-center#{get-name($i)} {
+    justify-content: center #{get-value($i)};
+  }
+  .flex-justify-content-flex-end#{get-name($i)} {
+    justify-content: flex-end #{get-value($i)};
+  }
+  .align-items-stretch#{get-name($i)} {
+    align-items: stretch #{get-value($i)};
+  }
+  .align-items-flex-start#{get-name($i)} {
+    align-items: flex-start #{get-value($i)};
+  }
+  .align-items-flex-end#{get-name($i)} {
+    align-items: flex-end #{get-value($i)};
+  }
+  .align-items-center#{get-name($i)} {
+    align-items: center #{get-value($i)};
+  }
+
+  // 1 - 50 px 的样式设置
+  @for $num from 1 through 50 {
+    .flex-#{$num}#{get-name($i)} {
+      flex: #{$num} #{get-value($i)};
+    }
+
+    .margin-#{$num}#{get-name($i)} {
+      margin: #{$num}px #{get-value($i)};
+    }
+    .margin-vertical-#{$num}#{get-name($i)} {
+      margin-top: #{$num}px #{get-value($i)};
+      margin-bottom: #{$num}px #{get-value($i)};
+    }
+    .margin-horizontal-#{$num}#{get-name($i)} {
+      margin-left: #{$num}px #{get-value($i)};
+      margin-right: #{$num}px #{get-value($i)};
+    }
+    .margin-left-#{$num}#{get-name($i)} {
+      margin-left: #{$num}px #{get-value($i)};
+    }
+    .margin-right-#{$num}#{get-name($i)} {
+      margin-right: #{$num}px #{get-value($i)};
+    }
+    .margin-top-#{$num}#{get-name($i)} {
+      margin-top: #{$num}px #{get-value($i)};
+    }
+    .margin-bottom-#{$num}#{get-name($i)} {
+      margin-bottom: #{$num}px #{get-value($i)};
+    }
+
+    .padding-#{$num}#{get-name($i)} {
+      padding: #{$num}px #{get-value($i)};
+    }
+    .padding-vertical-#{$num}#{get-name($i)} {
+      padding-top: #{$num}px #{get-value($i)};
+      padding-bottom: #{$num}px #{get-value($i)};
+    }
+    .padding-horizontal-#{$num}#{get-name($i)} {
+      padding-left: #{$num}px #{get-value($i)};
+      padding-right: #{$num}px #{get-value($i)};
+    }
+    .padding-left-#{$num}#{get-name($i)} {
+      padding-left: #{$num}px #{get-value($i)};
+    }
+    .padding-right-#{$num}#{get-name($i)} {
+      padding-right: #{$num}px #{get-value($i)};
+    }
+    .padding-top-#{$num}#{get-name($i)} {
+      padding-top: #{$num}px #{get-value($i)};
+    }
+    .padding-bottom-#{$num}#{get-name($i)} {
+      padding-bottom: #{$num}px #{get-value($i)};
+    }
+  }
+  ul:nth-child(3n + #{$i}) {
+    color: #000;
+  }
+}
