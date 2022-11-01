@@ -120,8 +120,16 @@ $style-weight: (
     .padding-bottom-#{$num}#{get-name($i)} {
       padding-bottom: #{$num}px #{get-value($i)};
     }
+
+    .width-#{$num * 50}#{get-name($i)} {
+      width: #{$num * 50}px;
+    }
   }
   ul:nth-child(3n + #{$i}) {
     color: #000;
   }
+}
+
+.overflow-scroll-y {
+  overflow-y: scroll;
 }

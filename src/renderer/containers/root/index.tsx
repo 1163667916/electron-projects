@@ -1,30 +1,36 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FireOutlined, FrownOutlined, RocketOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import { Header, Content, Footer } from 'antd/lib/layout/layout';
-import React, { useState } from 'react';
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import ChampionsContainer from '../champions';
+import React, { useEffect, useState } from 'react';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
 const Root = () => {
-  const [selectedKeys, setSelectedKeys] = useState<string[]>(['index']);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [selectedKeys, setSelectedKeys] = useState<string[]>(['/champions']);
 
   const navList = [
     {
       label: '首页',
-      key: 'index',
+      key: '/',
       icon: <FireOutlined />,
     },
     {
       label: '英雄列表',
-      key: 'champions',
+      key: '/champions',
       icon: <FrownOutlined />,
     },
     {
       label: '英雄数据',
-      key: 'champions-data',
+      key: '/champions-data',
       icon: <RocketOutlined />,
     },
   ];
+
+  useEffect(() => {
+    navigate(selectedKeys[0]);
+  }, []);
 
   return (
     <Layout className="layout fw fh">
@@ -35,28 +41,25 @@ const Root = () => {
           mode="horizontal"
           selectedKeys={selectedKeys}
           items={navList}
-          onSelect={({ selectedKeys: keys }) => {
+          onSelect={({ selectedKeys: keys, key }) => {
+            if (location.pathname === key) return;
             setSelectedKeys(keys);
+            navigate(key);
           }}
         />
       </Header>
-      <Content style={{ padding: '0 50px' }}>
+      <Content className="overflow-scroll-y" style={{ padding: '0 50px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
-        <Router>
-          <Routes>
-            <Route path="/index" element={<span>111</span>} />
-            <Route path="/champions" element={<ChampionsContainer />} />
-            <Route path="/champions-data" element={<ChampionsContainer />} />
-          </Routes>
-        </Router>
+
+        <Outlet />
       </Content>
-      <Footer style={{ textAlign: 'center' }}>
+      {/* <Footer style={{ textAlign: 'center' }}>
         Ant Design ©2018 Created by Ant UED
-      </Footer>
+      </Footer> */}
     </Layout>
   );
 };
