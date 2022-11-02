@@ -121,8 +121,12 @@ $style-weight: (
       padding-bottom: #{$num}px #{get-value($i)};
     }
 
-    .width-#{$num * 50}#{get-name($i)} {
-      width: #{$num * 50}px;
+    .width-#{$num * 10}#{get-name($i)} {
+      width: #{$num * 10}px;
+    }
+
+    .font-size-#{$num}#{get-name($i)} {
+      font-size: #{$num}px;
     }
   }
   ul:nth-child(3n + #{$i}) {
@@ -132,4 +136,21 @@ $style-weight: (
 
 .overflow-scroll-y {
   overflow-y: scroll;
+}
+
+.curosr-point {
+  cursor: pointer;
+}
+
+.text-overflow {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mutiple-text-overflow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }

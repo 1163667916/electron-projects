@@ -1,5 +1,5 @@
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import ChampionsContainer from './containers/champions';
+import ChampionsContainer from './containers/champions/containers/index';
 import RootContainer from './containers/root';
 import Index from './containers/index';
 import './App.css';
