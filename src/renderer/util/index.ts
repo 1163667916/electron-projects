@@ -1,3 +1,3 @@
-import { checkfileExt } from './commom';
+import { checkfileExt, createFileChunk } from './commom';
 
-export default { checkfileExt };
+export default { checkfileExt, createFileChunk };

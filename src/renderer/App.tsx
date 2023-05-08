@@ -13,6 +13,7 @@ import RootContainer, {
 import Index from './containers/index';
 import UploadPage from './containers/upload/containers/index';
 import ErrorPage from './containers/error';
+import FileViewer from './containers/file-viewer';
 
 const App = createMemoryRouter(
   createRoutesFromElements(
@@ -38,7 +39,7 @@ const App = createMemoryRouter(
           // action={editAction}
         />
         <Route path="upload" element={<UploadPage />} />
-        {/* <Route path="contacts/:contactId/destroy" action={destroyAction} /> */}
+        <Route path="file-viewer" element={<FileViewer />} />
       </Route>
     </Route>
   )

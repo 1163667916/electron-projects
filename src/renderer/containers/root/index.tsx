@@ -39,6 +39,11 @@ function Root() {
       key: '/upload',
       icon: <RocketOutlined />,
     },
+    {
+      label: '文件查看器',
+      key: '/file-viewer',
+      icon: <RocketOutlined />,
+    },
   ];
 
   useEffect(() => {

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Rule } from 'antd/es/form';
 import util from '@/util';
 import UploadVideoStyleComponent from '@/components/upload/video';
+import { createFileChunk } from '@/util/commom';
 import api from '../../api';
 
 type UploadVideoFormRule = Record<'title' | 'cover' | 'video', Rule[]>;
@@ -15,7 +16,7 @@ const uploadVideoTip = {
   video: '请上传视频（.mp4）',
 };
 
-function UploadVideo() {
+function LargeFileUpload() {
   const [loading, setLoading] = useState(false);
 
   const [uploadVideoForm] = AntForm.useForm();
@@ -72,7 +73,11 @@ function UploadVideo() {
         formData.append('title', form.title);
         formData.append('cover', form.cover[0].originFileObj);
         formData.append('x-video', form.video[0].originFileObj);
-        axios.post(api.uploadVideoData(), formData);
+
+        const fileChunkList = createFileChunk(form.video[0].originFileObj);
+        console.log(fileChunkList);
+
+        // axios.post(api.uploadVideoData(), formData);
         return form;
       })
       .catch(() => {});
@@ -157,4 +162,4 @@ function UploadVideo() {
   );
 }
 
-export default UploadVideo;
+export default LargeFileUpload;
