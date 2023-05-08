@@ -129,9 +129,9 @@ $style-weight: (
       font-size: #{$num}px;
     }
   }
-  ul:nth-child(3n + #{$i}) {
-    color: #000;
-  }
+  // ul:nth-child(3n + #{$i}) {
+  //   color: #000;
+  // }
 }
 
 .overflow-scroll-y {
@@ -143,7 +143,7 @@ $style-weight: (
 }
 
 .text-overflow {
-  overflow-x: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -153,4 +153,8 @@ $style-weight: (
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
 }

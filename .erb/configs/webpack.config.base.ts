@@ -3,9 +3,12 @@
  */
 
 import webpack from 'webpack';
+import libpath from 'path';
 import webpackPaths from './webpack.paths';
 import { dependencies as externals } from '../../release/app/package.json';
 
+const atAliasPath = libpath.resolve(__dirname, '../../', 'src/renderer/');
+console.log('================', atAliasPath);
 const configuration: webpack.Configuration = {
   externals: [...Object.keys(externals || {})],
 
@@ -44,12 +47,16 @@ const configuration: webpack.Configuration = {
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [webpackPaths.srcPath, 'node_modules'],
+    alias: {
+      '@': atAliasPath,
+    },
   },
 
   plugins: [
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
+    new webpack.ProvidePlugin({ _: 'lodash' }),
   ],
 };
 

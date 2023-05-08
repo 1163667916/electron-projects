@@ -1,14 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FireOutlined, FrownOutlined, RocketOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu } from 'antd';
-import { Header, Content, Footer } from 'antd/lib/layout/layout';
+import { Layout, Menu } from 'antd';
+import { Header, Content } from 'antd/lib/layout/layout';
 import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
-const Root = () => {
+export const loader = () => {
+  return {};
+};
+
+export const action = () => {
+  return {};
+};
+
+function Root() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedKeys, setSelectedKeys] = useState<string[]>(['/champions']);
+  const [selectedKeys, setSelectedKeys] = useState<string[]>(['/upload']);
 
   const navList = [
     {
@@ -24,6 +32,11 @@ const Root = () => {
     {
       label: '英雄数据',
       key: '/champions-data',
+      icon: <RocketOutlined />,
+    },
+    {
+      label: '上传',
+      key: '/upload',
       icon: <RocketOutlined />,
     },
   ];
@@ -49,19 +62,20 @@ const Root = () => {
         />
       </Header>
       <Content className="overflow-scroll-y" style={{ padding: '0 50px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
+        {/* <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
-
-        <Outlet />
+        </Breadcrumb> */}
+        <div className="margin-vertical-15">
+          <Outlet />
+        </div>
       </Content>
       {/* <Footer style={{ textAlign: 'center' }}>
         Ant Design ©2018 Created by Ant UED
       </Footer> */}
     </Layout>
   );
-};
+}
 
 export default Root;

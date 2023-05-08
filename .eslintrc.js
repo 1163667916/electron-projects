@@ -3,12 +3,15 @@ module.exports = {
   rules: {
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 'off',
-    'import/no-unresolved': 'error',
+    'import/no-unresolved': 'off',
     // Since React 17 and typescript 4.1 you can safely disable the rule
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
+    'react/jsx-filename-extension': 'off',
+    'no-undef': 'off',
+    'import/extensions': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

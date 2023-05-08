@@ -1,0 +1,22 @@
+[data-hash='shiomiya'].upload-video-style-box {
+  width: 500px;
+  height: 150px;
+  border: 1px dashed #d9d9d9;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  > p {
+    margin: 15px 0 0 0;
+  }
+
+  &:hover {
+    border-color: #1677ff;
+  }
+}

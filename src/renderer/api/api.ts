@@ -1,10 +1,14 @@
 // lol/
-const baseURL = '/api/lol';
+const baseURL = '/api';
 
-const getUrl = (path: string) => {
+const prefix = '/lol';
+
+export const getUrl = (path: string) => {
   return baseURL + path;
 };
 
+const lol = (path: string) => getUrl(prefix) + path;
+
 export default {
-  getChampionData: () => getUrl('/request_legend_list'),
+  getChampionData: () => lol('/request_legend_list'),
 };

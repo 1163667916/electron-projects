@@ -1,0 +1,34 @@
+#page-index {
+  .section-1 {
+    .left-part {
+      .carousel {
+        overflow: hidden;
+        width: 450px;
+        height: 400px;
+        background-color: #999;
+      }
+      img {
+        width: 100%;
+      }
+    }
+
+    .right-part {
+      img {
+        width: 100%;
+      }
+
+      .video {
+        margin-bottom: 10px;
+        .top {
+          width: 250px;
+          height: 160px;
+          overflow: hidden;
+        }
+
+        .middle {
+          padding-top: 5px;
+        }
+      }
+    }
+  }
+}
