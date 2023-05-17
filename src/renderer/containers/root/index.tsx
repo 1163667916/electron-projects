@@ -16,7 +16,7 @@ export const action = () => {
 function Root() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedKeys, setSelectedKeys] = useState<string[]>(['/upload']);
+  const [selectedKeys, setSelectedKeys] = useState<string[]>(['/file-viewer']);
 
   const navList = [
     {
@@ -72,7 +72,10 @@ function Root() {
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb> */}
-        <div className="margin-vertical-15">
+        <div
+          className="margin-vertical-15"
+          style={{ position: 'relative', width: '100%', height: '100%' }}
+        >
           <Outlet />
         </div>
       </Content>
